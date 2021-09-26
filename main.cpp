@@ -1,9 +1,12 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
+#include <typeinfo>
+#include <string>
 #include <math.h>
 
 std::clock_t start;
+typedef int type;
 double duration;
 int N = 1000000;
 double refSIN = 4.25e-08;
@@ -22,8 +25,8 @@ double find_min(double* ar)
 }
 
 double func_sin(int amount) {
-    int num;
-    num = rand() % 11;
+    type num;
+    num = static_cast <type> (rand()) / static_cast <type> (RAND_MAX);
     start = std::clock();
     for (int i = 0; i < amount; i++)
     {
@@ -34,8 +37,8 @@ double func_sin(int amount) {
 }
 
 double func_cos(int amount) {
-    int num;
-    num = rand() % 11;
+    type num;
+    num = static_cast <type> (rand()) / static_cast <type> (RAND_MAX);
     start = std::clock();
     for (int i = 0; i < amount; i++)
     {
@@ -46,8 +49,9 @@ double func_cos(int amount) {
 }
 
 double func_tan(int amount) {
-    int num;
-    num = rand() % 11;
+    type num;
+    //num = rand() % 11;
+    num = static_cast <type> (rand()) / static_cast <type> (RAND_MAX);
     start = std::clock();
     for (int i = 0; i < amount; i++)
     {
@@ -150,9 +154,9 @@ int main(int argc, char* argv[]) {
     std::ofstream file;
     file.open("data.csv", std::ios_base::app);
     //file << "PModel,Task,OpType,Opt,InsCount,Timer,LNum,AvTIme,AbsErr,RelErr,TaskPerf\n";
-    file << "AMD_FX(tm)-4300_Quad-Core_Processor,sin,double,O2,100000,std::clock()," << time_sin << "1," << time_sin/n_sin << "," << AE_sin << "," << (AE_sin/refSIN)*100 << "," << perf_sin << "\n";
-    file << "AMD_FX(tm)-4300_Quad-Core_Processor,cos,double,O2,100000,std::clock()," << time_cos << "1," << time_cos/n_cos << "," << AE_cos << "," << (AE_cos/refCOS)*100 << "," << perf_cos << "\n";
-    file << "AMD_FX(tm)-4300_Quad-Core_Processor,tan,double,O2,100000,std::clock()," << time_tan << "1," << time_tan/n_tan << "," << AE_tan << "," << (AE_tan/refTAN)*100 << "," << perf_tan << "\n";
+    file << "AMD_FX(tm)-4300_Quad-Core_Processor,sin," << typeid(type).name() << ",None,100000,std::clock()," << time_sin << "1," << time_sin/n_sin << "," << AE_sin << "," << (AE_sin/refSIN)*100 << "," << perf_sin << "\n";
+    file << "AMD_FX(tm)-4300_Quad-Core_Processor,cos," << typeid(type).name() << ",None,100000,std::clock()," << time_cos << "1," << time_cos/n_cos << "," << AE_cos << "," << (AE_cos/refCOS)*100 << "," << perf_cos << "\n";
+    file << "AMD_FX(tm)-4300_Quad-Core_Processor,tan," << typeid(type).name() << ",None,100000,std::clock()," << time_tan << "1," << time_tan/n_tan << "," << AE_tan << "," << (AE_tan/refTAN)*100 << "," << perf_tan << "\n";
 
     // ПОИСК ЭТАЛОННОГО ВРЕМЕНИ ВЫПОЛНЕНИЯ
     //
