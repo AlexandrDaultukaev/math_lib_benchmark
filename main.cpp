@@ -6,12 +6,18 @@
 #include <math.h>
 
 std::clock_t start;
-typedef int type;
+typedef double type;
 double duration;
+double end;
 int N = 1000000;
 double refSIN = 4.25e-08;
 double refCOS = 3.818e-08;
 double refTAN = 1.4694e-07;
+
+int empty_func()
+{
+    return 0;
+}
 
 double find_min(double* ar)
 {
@@ -33,6 +39,13 @@ double func_sin(int amount) {
         sin(num);
     }
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+        start = std::clock();
+    for (int i = 0; i < amount; i++)
+    {
+        empty_func();
+    }
+    end = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+    duration = duration - end;
     return duration;
 }
 
@@ -45,6 +58,13 @@ double func_cos(int amount) {
         cos(num);
     }
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+    start = std::clock();
+    for (int i = 0; i < amount; i++)
+    {
+        empty_func();
+    }
+    end = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+    duration = duration - end;
     return duration;
 }
 
@@ -58,12 +78,14 @@ double func_tan(int amount) {
         tan(num);
     }
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+        start = std::clock();
+    for (int i = 0; i < amount; i++)
+    {
+        empty_func();
+    }
+    end = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+    duration = duration - end;
     return duration;
-}
-
-void func_s(int num)
-{
-    sin(num);
 }
 
 int main(int argc, char* argv[]) {
