@@ -1,0 +1,10 @@
+PModel,Task,OpType,Opt,InsCount,Timer,LNum,AvTIme,AbsErr,RelErr,TaskPerf
+AMD_FX(tm)-4300_Quad-Core_Processor,sin,double,None,100000,std::clock(),0.0034061,3.406e-08,8.44e-09,19.8588,20.1792
+AMD_FX(tm)-4300_Quad-Core_Processor,cos,double,None,100000,std::clock(),0.0016821,1.682e-08,2.136e-08,55.9455,10.3624
+AMD_FX(tm)-4300_Quad-Core_Processor,tan,double,None,100000,std::clock(),0.0042991,4.299e-08,1.0395e-07,70.7432,6.95086
+AMD_FX(tm)-4300_Quad-Core_Processor,sin,double,O1,100000,std::clock(),8.3e-051,8.3e-10,4.167e-08,98.0471,23.467
+AMD_FX(tm)-4300_Quad-Core_Processor,cos,double,O1,100000,std::clock(),9e-051,9e-10,3.728e-08,97.6427,12.4347
+AMD_FX(tm)-4300_Quad-Core_Processor,tan,double,O1,100000,std::clock(),8e-051,8e-10,1.4614e-07,99.4556,8.65831
+AMD_FX(tm)-4300_Quad-Core_Processor,sin,double,O2,100000,std::clock(),2e-061,2e-11,4.248e-08,99.9529,24.9838
+AMD_FX(tm)-4300_Quad-Core_Processor,cos,double,O2,100000,std::clock(),1e-061,1e-11,3.817e-08,99.9738,12.9939
+AMD_FX(tm)-4300_Quad-Core_Processor,tan,double,O2,100000,std::clock(),1e-061,1e-11,1.4693e-07,99.9932,9.10365
